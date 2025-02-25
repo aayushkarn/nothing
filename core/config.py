@@ -1,0 +1,18 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+# SQLALCHEMY_DATABASE_URL = "mysql://root:@localhost/bibas"
+DATABASE_USERNAME = 'root'
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+DATABASE_HOSTNAME = 'localhost'  # or an IP address
+DATABASE_NAME = 'bibas'
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABASE_HOSTNAME}/{DATABASE_NAME}"
+
+
+VERIFICATION_EXPIRY_TIME = 60 #in seconds
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+JWT_ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+REFRESH_TOKEN_EXPIRE_DAYS = 30
