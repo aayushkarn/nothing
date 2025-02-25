@@ -120,7 +120,7 @@ async def verify_user(verificationModel:UserVerification ,db:Session = Depends(g
             raise HTTPException(status_code=400, detail="Email Invalid")
         user = db.query(User).filter(User.email == email).first()
     if phone:
-        if not validate_email(phone) or not phone.isnumeric():
+        if not validate_phone(phone) or not phone.isnumeric():
             raise HTTPException(status_code=400, detail="Phone must be of 10 digits")
         user = db.query(User).filter(User.phone == phone).first()
     
